@@ -1,0 +1,73 @@
+=> In last session we discussed about Generators
+
+=> Generators are used to generate the value for primary key
+
+=> For every table we will maintain a primary key 
+
+=> Primary key is a constraint which contains below 2 rules
+
+		1) NOT NULL
+		2) UNIQUE
+
+=> Instead of asking end user to enter value for primary key we are generating that value using Generators
+
+-> To generate value for primary key we are using @GeneratedValue
+
+-> If we are using Oracle database then @GeneratedValue will use hibernate_sequence to generate value for primary key
+
+-> We can also use custom sequence to generate value for primary key
+-------------------------------------------------------------------------
+-> In Spring Data JPA, we can use below strategies to generate the value for primary keys
+
+AUTO : It works based on database (if oracle db it will use sequence generator if mysql db it will use identity generator)
+
+IDENTITY : DB should generate primary key value. Mysql will support with Auto_increment concept. It doesn't supported by Oracle db.
+
+SEQUENCE : IT will use sequence to generate primary key column value. Oracle DB will support where as mysql db will not support.
+
+TABLE : Seperate table will be maintained for only primary key values.
+
+		a) read primary key value from table
+		b) update next primary key value in table
+		c) insert the record into actual table
+-------------------------------------------------------------------------
+Assignment: How to work with Composite Primary Key in Data JPA
+------------------------------------------------------------------------
+Timestamping
+------------------------------------------------------------------------
+
+-> Timestamping concept is used to insert the values for CREATED_DATE and UPDATED_DATE
+
+-> In the realtime for every table we will use below 2 columns
+
+		CREATED_DATE
+		UPDATED_DATE
+
+-> The above 2 columns will help us to analyze the data
+
+-> To insert value for CREATED_DATE & UPDATED_DATE columns we will use TIME STAMPING concept
+
+-> Timestamping provided below 2 annotations
+
+  @CreationalTimestamp : It will insert created date value into column
+  @UpdateTimestamp : It will insert updated date value into column
+
+----------------------------------------------------------------------------------
+	@Column(name = "CREATED_DATE")
+	@CreationTimestamp
+	private LocalDate createdDate;
+
+	@Column(name = "UPDATED_DATE")
+	@UpdateTimestamp
+	private LocalDate updateDate;
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

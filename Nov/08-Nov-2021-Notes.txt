@@ -1,0 +1,86 @@
+Course Name : Spring Boot with Cloud & Microservices
+
+Start Date: 08-Nov-2021 (Today)
+
+Class Timings : 8:30 PM - 9:45 PM IST (Mon-Sat)
+
+Class Mode : Online (Using Zoom App)
+
+Course Duration : 3 to 3.5 Months
+
+Trainer : Ashok (8+ Yrs Exp, Working in Product Based Company)
+
+Note: Daily Live classes will be available + Daily Class Notes will be shared
+----------------------------------------------------------------------------------
+
+Pre-request
+------------
+Core Java
+Adv Java (JDBC, Servlets & JSP)
+SQL Basics
+
+ORM Basics (Good to have)
+Spring Core Basics (Good to have)
+
+SBMS - Course Content
+----------------------
+Module-1 : Spring Core Basics & Spring Boot Internals
+
+Module-2 : Spring Data JPA (It internally uses Hibernate)
+
+Module-3 : Spring Web MVC
+
+Module-4 : RESTful Services
+
+Module-5 : Cloud with Microservies
+
+Module-6 : Tools (Docker, Jenkins, Kafka, Redis etc)
+
+-----------------------------------------------------------------------------------
+Module-1 : Spring Basics and Spring Boot Internals
+----------------------------------------------------------------------------------
+
+=> What is Spring ?
+
+Spring is an open source light weight java based framework.
+
+By Using Spring framework we can develop several types of java applications
+
+		-> Standalone apps
+		-> Web applications
+		-> Distributed Applications
+		-> Microservices architecture based app
+
+
+-> The applications which runs in only one computer are called as Standalone apps
+
+		Ex: Notepad, Eclipse IDE, Calculator etc...
+
+-> To use standalone apps we have to download and install in our computer
+
+
+-> The application which can be accessed using internet is called as web application.
+
+		Ex : facebook, gmail, irctc, ashokit.in etc...
+
+-> Web applications we are going to access directley using browsers 
+
+
+-> The applicaion which is communicating with another application is called as distributed application.
+
+		Ex: Passport Web App  <-----> AADHAR App
+
+		    MakeMytrip <-----> Air Lines, Hotels, IRCTC					    
+
+-> Earlier people used to develop all the functionalities as single project (Monolith Architecture Project).
+
+-> Now a days in the industry people are developing projects using Microservices Architecture.
+
+
+Whatsapp msg : +91 6301921083
+
+
+
+
+
+

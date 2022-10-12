@@ -1,0 +1,131 @@
+=> In yesterday's session we developed 2 web apps using Spring Boot
+
+=> Today's session : Web app development
+-------------------------------------------------------------------------
+
+-> To create web application with spring boot we are using "spring-boot-starter-web" dependency
+
+-> Web Starter supports for 
+
+		1) web app development
+		2) rest api development
+		3) tomcat embedded server
+
+-------------------------------------------------------------------------
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+
+-------------------------------------------------------------------------
+-> spring-boot-devtools dependency is used for re-starting the server when changes happend in the project.
+--------------------------------------------------------------------------
+
+-> In every web application mainly we will have 2 types of functionalities
+
+		1) sending data from controller to ui
+		
+		2) sending data from ui to controller
+
+-------------------------------------------------------------------------
+
+-> In Spring Web MVC we have Model interface to send data from controller to UI
+
+-> Model will represent the data in the form of key-value pair
+
+		Key - String type
+		Value - Object type
+----------------------------------------------------------------------------------
+@Controller
+public class WelcomeController {
+
+	@GetMapping("/welcome")
+	public String welcomeMsg(Model model) {
+		model.addAttribute("msg", "Welcome to Ashok IT Family...!!");
+		return "index";
+	}
+}
+---------------------------------------------------------------------------------
+-> Model is an interface which is used to send data to ui in key-value pair
+
+-> Model interace having BindingAwareModelMap as the implementation class
+
+-> BindingAwareModelMap internally uses LinkedHashMap to store the data
+
+--------------------------------------------------------------------------------
+public class User {
+
+	private Integer userId;
+	private String username;
+	private String userEmail;
+
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(Integer userId, String username, String userEmail) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.userEmail = userEmail;
+	}
+-----------------------------------------------------------------------------------
+@Controller
+public class UserController {
+
+	@GetMapping("/user")
+	public String getUserData(Model model) {
+		
+		User userObj = new User(101, "Ashok", "ashokitschool@gmail.com");
+		
+		model.addAttribute("user", userObj);
+
+		return "user-data";
+	}
+}
+-----------------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	User Id : ${user.userId} <br/>
+	User Name : ${user.username} <br/>
+	User Email : ${user.userEmail} <br/>
+</body>
+</html>
+-----------------------------------------------------------------------------------
+
+Assignment : Develop a spring boot web application which will display list of users data in table format.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

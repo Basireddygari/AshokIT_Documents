@@ -1,0 +1,50 @@
+Last session : Creating Spring Boot Application
+--------------------------------------------------------------------------
+-> We can create Spring Boot application in two ways
+
+		i) start.spring.io (spring initializr website)
+		ii) Spring Tool Suite (STS)
+
+
+Note: If we create Spring Boot application using STS internally it will communicate with start.spring.io website only to create the spring boot application.
+
+			     network
+		STS  <-------------------> start.spring.io
+
+-> To create spring boot application internet connectin mandatory for our computer.
+-----------------------------------------------------------------------------------------------
+
+
+Tomorrow (27-Nov) (Saturday) 13-SBMS Class Timing: 6:00 PM - 8:30 PM IST
+
+Day After Tomorrow (28-Nov) (Sunday) 13-SBMS Class Timing: 6:00 PM - 8:30 PM IST
+
+Note: Sunday (28-Nov) Spring Boot Security (JWT) Free workshop @10:00 AM IST (If you are intrested you can attend free workshop)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

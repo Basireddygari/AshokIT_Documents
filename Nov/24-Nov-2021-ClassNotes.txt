@@ -1,0 +1,105 @@
+Last session : What is Spring Boot ?
+-----------------------------------------------------------------------------------
+Today's session : Advantages of Spring Boot
+-----------------------------------------------------------------------------------
+
+-> Spring Boot is just one approach to develop Spring Based applications with minimal or less configurations.
+
+-> What type of apps we can develop using spring same type of apps can be developed using Spring Boot also.
+
+-> If we use Spring framework then we are responsible to manage configurations.
+
+-> Spring Boot came up with a concept called Auto-Configuration.
+
+-> Auto-Configuration means spring boot will identify the configuration which is required for our application and it will provide that configuration.
+
+-> Spring Boot came into market in the year of 2014 (Spring Boot 1.0v)
+
+-> The current version of Spring Boot is 2.6v
+---------------------------------------------------------------------------------
+Advantages of Spring Boot
+---------------------------------------------------------------------------------
+
+1) Starter POMs
+
+2) Dependency Version Mgmt
+
+3) Auto-Configuration
+
+4) Embedded Servers
+
+5) Actuators etc..
+
+
+-> Starter POMs nothing but maven/gradle dependencies. Spring Boot provided starter poms to reduce dependencies configuration in maven/gradle.
+
+		spring-boot-starter
+		spring-boot-starter-web
+		spring-boot-starter-webflux
+		spring-boot-starter-data-jpa
+		spring-boot-starter-mail
+		spring-boot-starter-security etc....
+		
+-> When we configure dependency in spring boot application then we no need to specify version number for dependency because spring boot will identify compatiable version for that based on spring-boot-parent-starter version.
+
+-> Auto-Configuration means based on dependencies configured in pom.xml it will identify configuration required for our application and it will provide that configuration.
+
+		i) creating connection pool
+		ii) starting IOC container
+		iii) dependency injection
+		iv) starting server
+		v) deploying application
+
+-> Embedded servers are in-built in spring boot application. When we add spring-boot-starter-web dependency then it will provide Apache Tomcat as default embedded server.
+
+-> Actuators are used to monitor our application.
+
+		-> Getting application health
+		-> Getting beans loaded by application
+		-> Getting url-mappings of application
+		-> Getting config-props of application
+		-> Getting env info of application etc...
+
+
+
+	Spring Boot = Spring Framework - XML Configuration + AutoConfiguration
+
+-----------------------------------------------------------------------------------
+Dis-Advantages of Spring Boot
+---------------------------------------------------------------------------------
+-> Converting existing spring project into spring boot application is difficult task.
+
+-> Spring Boot is best suitable for brand new projects.
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

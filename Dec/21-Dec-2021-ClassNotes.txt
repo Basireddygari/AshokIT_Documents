@@ -1,0 +1,197 @@
+=> In Last session we discussed about Generatrion Strategies & Timestamping
+
+=> Today's session : Composite Primary Key & TX rollback
+---------------------------------------------------------------------------------
+-> Primary Key is used to maintain unique data in table
+-> Primary Key is a constraint which is combination of below 2 constraints
+
+		a) NOT NULL
+		b) UNIQUE
+---------------------------------------------------------------------------------
+-> If we have more than one primary key in the table then we will call it as Composite Primary Key.
+
+Ex: 
+
+CREATE TABLE BANK_ACCOUNTS
+(
+	ACC_ID NUMBER(10),
+	HOLDER_NAME VARCHAR2(20),
+	ACC_TYPE VARCHAR2(10),
+	BRANCH_NAME VARCHAR2(20),
+	PRIMARY KEY (ACC_ID, ACC_TYPE)
+)
+-----------------------------------------------------------------------------------
+Working with Composite Primary Key in Data JPA
+----------------------------------------------------------------------------------
+-> To work with composite primary keys we will use below annotations
+
+		@Embeddable
+		@EmbeddedId
+
+-> Create one class with all the variables representing primary keys of the table for that class will use @Embeddable annotation.
+
+-> Create entity class with non primary key mapped variables and use Emeddable class as reference like below
+--------------------------------------------------------------------------------------------
+@Embeddable
+@Data
+public class AccountPK implements Serializable {
+
+	private Integer accId;
+	private String accType;
+	private String holderName;
+}
+---------------------------------------------------------------------------------------------
+@Data
+@Entity
+@Table(name = "BANK_ACCOUNTS")
+public class Account {
+
+	@Column(name = "BRANCH_NAME")
+	private String branchName;
+
+	@Column(name = "MIN_BAL")
+	private Double minBal;
+
+	@EmbeddedId
+	private AccountPK accPk;
+
+-----------------------------------------------------------------------------------------------
+public interface AccountRepository extends JpaRepository<Account, AccountPK> {
+
+}
+----------------------------------------------------------------------------------------------
+@Service
+public class AccountService {
+
+	private AccountRepository accRepo;
+
+	public AccountService(AccountRepository accRepo) {
+		this.accRepo = accRepo;
+	}
+
+	public void getDataUsingPK() {
+
+		AccountPK pk = new AccountPK();
+		pk.setAccId(105);
+		pk.setAccType("SAVINGS");
+		pk.setHolderName("TCS");
+
+		Optional<Account> findById = accRepo.findById(pk);
+		if (findById.isPresent()) {
+			System.out.println(findById.get());
+		}
+	}
+
+	public void saveAccData() {
+		AccountPK pk = new AccountPK();
+		pk.setAccId(105);
+		pk.setAccType("SAVINGS");
+		pk.setHolderName("TCS");
+
+		Account acc = new Account();
+		acc.setBranchName("Ameerpet");
+		acc.setMinBal(5000.00);
+
+		acc.setAccPk(pk); // setting pk class obj to entity obj
+
+		accRepo.save(acc);
+	}
+}
+---------------------------------------------------------------------------------------------
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+		AccountService accountService = context.getBean(AccountService.class);
+		//accountService.saveAccData();
+		accountService.getDataUsingPK();
+		context.close();
+	}
+}
+--------------------------------------------------------------------------------------------
+Note: We can't use generators for composite primary keys
+---------------------------------------------------------------------------------------------
+Realtime Use case for Composite Primary Key - STUDENTS Registering for Demo in AshoK IT website
+---------------------------------------------------------------------------------------------	
+user-id  Phno  Email   CourseName
+(pk)     (pk)		(pk)	 
+--------------------------------------------------------------------------------------------
+1	1345   ..	SBMS
+
+2	1345   ..       JRTP
+-----------------------------------------------------------------------------------------------
+1) duplicate data should not be there in table
+2) one student can register for multiple courses
+3) multiple students can register for single course
+----------------------------------------------------------------------------------------------
+-> If we take user_id as primary key then one student can register for same course for multiple times it leads to duplicate data.
+
+-> If we take phno as primary key one student can register for only one course (can't register for second course with same phno)
+
+-> if we take course name as primary key only one student can register for one course
+
+---------------------------------------------------------------------------------------------
+Transaction Rollback
+---------------------------------------------------------------------------------------------
+-> When we perform insert/update/delete operation with database then transaction will commit
+
+-> Transaction is used to store the data permanently in database
+
+@Rollback(Exception.class)
+public void sendAmount(){
+
+     //deduct amt from sender acc
+
+     //add amt to reciever acc
+}
+
+-> If the above method exeucted successfully then we don't have any problem then transaction can be committed.
+
+-> If any exception occurs in the method then we have to rollback the transaction.
+
+-> To rollback the transaction we will use @Rollback annotation
+----------------------------------------------------------------------------------------------
+
+1) What is Spring Data JPA
+2) Data JPA Advantages
+3) Enity Class
+4) @Entity, @Table, @Id, @Column
+5) CrudRepository
+6) JpaRepository
+7) Pagination
+8) Sorting
+9) QueryByExample
+10) findByXXX methods
+11) Custom Queries
+12) SQL vs HQL
+13) ORM properties (show_sql, format_sql, dialect, ddlauto)
+14) Generators & Strategies
+15) Custom Generator
+16) Timestamping (create_date & update_date)
+17) Composite Primary Keys
+18) Tx Rollback
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

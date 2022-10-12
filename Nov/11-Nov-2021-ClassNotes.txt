@@ -1,0 +1,36 @@
+Spring Modules  - Information
+--------------------------------
+
+Spring Core : This is spring framework fundamental module which is providing IOC & DI concepts.
+
+		IOC : Inversion of Control
+		DI : Dependency Injection
+
+Spring Context : This module will deal with configurations required for applications.
+
+Spring AOP : This module is used to seperate primary logic and secondary logics( tx,  	      auditing, security etc.).
+
+Spring DAO / JDBC : This module is used to develop persistence layer (DB communication logic)
+
+Spring ORM : This module is used to develop persistence layer with Object Relational Mapping
+
+Spring Web MVC : This module is used to develop web applications using Spring Framework
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

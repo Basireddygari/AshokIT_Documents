@@ -1,0 +1,42 @@
+Last session : What is Spring Framework
+------------------------------------------------------------------------
+
+-> Spring is an open source light weight framework
+
+-> By using Spring Framework we can develop several types of applications
+
+	=> Standalone apps
+	=> Web applications
+	=> Distributed Applications
+	=> Microservice architecture based apps
+----------------------------------------------------------------------------------
+Spring Framework Advantages
+-------------------------------------------------------------------------------
+
+-> Applications development is easy with Spring Framework. Spring Framework providing common logics required for applications development.
+
+Ex:
+
+	-> Database Connection Establishment
+	-> Request pre processing & post processing
+	-> Capturing Form data
+	-> Form Validations etc...
+
+-> Spring Framework is Non-Invasive Framework. We no need to extend/implement Spring related classes & interfaces. Spring supports POJO model programming.
+
+-> Spring is versatile framework. Spring framework can be integrated with any other java framework available in the market.
+
+-> Spring is light weight framework. It is developed in modular fashion. Spring framework will not force you to use all the modules of it. Based on your requirement you can choose which module is required for you and you can take only that particular module.
+
+-> Spring Framework having below modules
+
+		-> Spring Core
+		-> Spring Context
+		-> Spring DAO
+		-> Spring ORM
+		-> Spring AOP
+		-> Spring Web MVC
+----------------------------------------------------------------------------------------------
+
+
+

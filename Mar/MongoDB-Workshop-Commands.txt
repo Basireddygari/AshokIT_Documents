@@ -1,0 +1,174 @@
+-> After Installing Mongo DB software we can open Mongo Shell and we can perform below operations.
+
+-> To open Mongo Shell go to command prompt and type mongo (It will open shell)
+
+-> Once Mongo shell is opened, we can execute below commands.
+
+
+Create Database
+----------------
+cmd > use DATABASE_NAME  
+
+Ex: use AshokIT
+
+To check the currently selected database, use the command db
+-------------------------------------------------------------
+cmd > db
+
+To check all dbs
+-----------------
+cmd > show dbs
+
+Drop Database 
+--------------------
+cmd > db.dropDatabase()
+
+MongoDB Create Collection
+----------------------------
+cmd > db.createCollection(name, options)   
+
+Name: is a string type, specifies the name of the collection to be created.
+
+Options: is a document type, specifies the memory size and indexing of the collection. It is an optional parameter.
+
+Ex: > db.createCollection("AIT")
+
+To Check the created collection, use the command "show collections"
+--------------------------------------------------------------------
+cmd > show collections
+
+Inserting Document into collection
+------------------------------------
+Syntax: db.COLLECTION_NAME.insert(....)
+
+Ex:
+cmd > db.AIT.insert({"name" : "Ashok IT"})  
+
+(When we insert document it will create collection automatically)
+
+To see the inserted document, use the find() command
+----------------------------------------------------
+cmd > db.collection_name.find()
+
+MongoDB Drop collection
+-------------------------
+cmd > db.COLLECTION_NAME.drop()  
+
+Ex: > db.AIT.drop()
+
+MongoDB insert documents
+--------------------------
+In MongoDB, the db.collection.insert() method is used to add or insert new documents into a collection in our database.
+
+Syntax : cmd > db.COLLECTION_NAME.insert(document)
+
+Ex: 
+
+db.AIT.insert(  
+   {  
+     course: "Java",  
+     details: {  
+        duration: "4 months",  
+        Trainer: "Mr. Ashok"  
+     },  
+     Batch: [ { size: "Small", qty: 30 }, { size: "Medium", qty: 50 } ],  
+     category: "Programming language"  
+   }  
+)
+
+
+Check the inserted documents
+---------------------------
+cmd > db.AIT.find().pretty()
+
+
+Create an array of documents
+
+
+var Allcourses =  
+    [  
+      {  
+        Course: "Java",  
+        details: { Duration: "6 months", Trainer: "Ashok" },  
+        Batch: [ { size: "Medium", qty: 25 } ],  
+        category: "Programming Language"  
+      },  
+      {  
+        Course: ".Net",  
+        details: { Duration: "6 months", Trainer: "Mahesh" },  
+        Batch: [ { size: "Small", qty: 5 }, { size: "Medium", qty: 10 }, ],  
+        category: "Programming Language"  
+      },  
+      {  
+        Course: "Web Designing",  
+        details: { Duration: "3 months", Trainer: "Samba" },  
+        Batch: [ { size: "Small", qty: 5 }, { size: "Large", qty: 10 } ],  
+        category: "Programming Language"  
+      }  
+    ];
+	
+	db.MYC.insert( Allcourses ); 
+	
+cmd > db.AIT.insert(Allcourses);  
+
+We can see inserted documents using below command
+-------------------------------------------------
+cmd > db.MYC.find()  
+
+
+MongoDB update documents
+--------------------------
+In MongoDB, update() method is used to update or modify the existing documents of a collection.
+
+Syntax:  db.COLLECTION_NAME.update(SELECTIOIN_CRITERIA, UPDATED_DATA)
+
+//Insert below document
+
+db.AIT.insert(  
+   {  
+     course: "java",  
+     details: {  
+        duration: "6 months",  
+        Trainer: "Ashok"  
+     },  
+     Batch: [ { size: "Small", qty: 15 }, { size: "Medium", qty: 25 } ],  
+     category: "Programming language"  
+   }  
+)  
+
+Check the inserted document 
+----------------------------
+cmd > db.AIT.find()
+
+
+Update the existing course "java" to "python"
+----------------------------------------------
+cmd > db.AIT.update({'course':'java'},{$set:{'course':'python'}})
+
+Check the updated document in the collection
+
+cmd > db.MYC.find()
+
+MongoDB Delete documents
+------------------------
+In MongoDB, the db.colloction.remove() method is used to delete documents from a collection. The remove() method works on two parameters.
+
+1. Deletion criteria: With the use of its syntax you can remove the documents from the collection.
+
+2. JustOne: It removes only one document when set to true or 1.
+
+Syntax : db.collection_name.remove (DELETION_CRITERIA)  
+
+Remove all documents
+--------------------
+If you want to remove all documents from a collection, pass an empty query document {} to the remove() method. The remove() method does not remove the indexes.
+
+db.AIT.remove({})  
+
+Remove all documents that match a condition
+----------------------------------------------
+db.AIT.remove( { type : "programming language" } )  
+
+Remove a single document that match a condition
+---------------------------------------------------
+db.MYC.remove( { type : "programming language" }, 1 )  

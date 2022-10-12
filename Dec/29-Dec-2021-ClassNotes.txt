@@ -1,0 +1,168 @@
+Last session : Login Form Development
+
+Today's session : Registration Form Development
+--------------------------------------------------------------------------
+-> Spring Web MVC module provided Form Tag Library to simplify forms development
+
+-> Below are the tags available in spring mvc form tag library
+
+<form:form/>  : To display a form
+<form:input/> : To display a text field
+<form:password/> : To display a password field
+<form:radiobutton/> : To display single radio button
+<form:radiobuttons/> : To display multiple radio buttons
+<form:select/> : To display a dropdown/listbox
+<form:option/> : To display one option for the dropdown
+<form:options/> : To display multiple options for the dropdown
+<form:checkbox/> : To display single checkbox
+<form:checkboxes/> : To display mutliple checkboxes
+<form:button/> : To display a button
+<form:hidden/> : To represent hidden field
+<form:error/> : To display error message (validation error)
+
+
+-> To use these tags we have to specifiy taglib of spring mvc form tag library
+--------------------------------------------------------------------------
+Requirement: Develop Student Registration Form Using Spring MVC Form Tag Library
+-------------------------------------------------------------------------
+1) Create Spring Starter project with below dependencies
+
+		a)spring-boot-starter-web
+		b)tomcat-embed-jasper
+		c)spring-boot-devtools
+
+2) Configure Server Port & View Resolver in application.properties file
+
+3) Create Form Binding Class to represent form data
+
+4) Create Controller class with below methods
+
+	a) method to load empty form (HTTP GET Request)
+	b) method to handle Register button (HTTP POST Request)
+
+5) Create View Files
+
+	a)index.jsp (form display)
+	b)success.jsp (success msg display)
+
+6) Run the application and test it
+---------------------------------------------------------------------------------
+
+public class Student {
+
+	private String name;
+	private String email;
+	private String gender;
+	private String course;
+	private String[] timings;
+
+	//setters & getters
+}
+----------------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import in.ashokit.binding.Student;
+
+@Controller
+public class StudentController {
+
+	@GetMapping("/student")
+	public String loadForm(Model model) {
+		model.addAttribute("student", new Student());
+		return "index";
+	}
+
+	@PostMapping("/saveStudent")
+	public String handleRegisterBtn(Student student, Model model) {
+		System.out.println(student);
+		String name = student.getName();
+		String msgTxt = name + ", Your Registration Completed Successfully..!!";
+		model.addAttribute("msg", msgTxt);
+		return "success";
+	}
+}
+-----------------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form:form action="saveStudent" modelAttribute="student" method="POST">
+		<table>
+			<tr>
+				<td>Name :</td>
+				<td><form:input path="name" /></td>
+			</tr>
+			<tr>
+				<td>Email :</td>
+				<td><form:input path="email" /></td>
+			</tr>
+			<tr>
+				<td>Gender :</td>
+				<td><form:radiobutton path="gender" value="Male"/>Male <form:radiobutton
+						path="gender" value="Fe-Male"/>Fe-Male</td>
+			</tr>
+			<tr>
+				<td>Course :</td>
+				<td><form:select path="course">
+						<form:option value="">-Select-</form:option>
+						<form:option value="java">Java</form:option>
+						<form:option value="python">Python</form:option>
+						<form:option value="devops">DevOps</form:option>
+					</form:select></td>
+			</tr>
+			<tr>
+				<td>Timings :</td>
+				<td>
+					<form:checkbox path="timings" value="morning"/> Morning
+					<form:checkbox path="timings" value="Evening"/> Evening
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Register"/></td>
+			</tr>
+		</table>
+	</form:form>
+</body>
+</html>
+----------------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	${msg} <br/>
+	
+	<a href="student">Go Back</a>
+</body>
+</html>
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+In Last session, we have completed Spring Framework basics
+--------------------------------------------------------------------
+What is Spring Framework
+Spring Framework Architecture 
+Spring Framework Modules
+Developing Applications using Spring Framework
+What is IOC container
+What is Dependency Injection
+What is Setter Injection
+What is Constructor Injection
+Bean Configuration File
+How to start IOC container
+Bean Scopes (Singleton & Prototype)
+When to use which bean scope
+----------------------------------------------------------------------------------
+Spring Boot
+----------------------------------------------------------------------------------
+-> Spring Boot is an approach to develop Spring Based applications with minimal or less configurations.
+
+-> What type of applications we can develop using Spring framework, same type of applications we can develop with Spring Boot also.
+
+-> If we use spring framework then we are responsible for managing configurations required for the application.
+
+-> To avoid manual configuration, Spring Boot came up with a concept called Auto-Configuration.
+
+What is Auto Configuration?
+--------------------------
+Spring boot is intelligent to understand the configurations required for application and it will provide that configuration this is called as Auto-Configuration which is in-built concept in Spring Boot.
+
+
+Note: If we develop application using Spring Boot then we can focus only on business logic because configuration part will taken care by Spring Boot.
+
+Note: Spring Boot is not replacement for Spring. Spring Boot is developed on top of Spring framework.
+----------------------------------------------------------------------------------
+
+-> Spring 1.0 released in the year of 2004
+
+-> The current version of Spring is 5.x which is released in 2017
+
+-> Spring Boot 1.0 released in the year of 2014
+
+-> The current version of Spring Boot is 2.6 version
+
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

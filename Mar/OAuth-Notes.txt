@@ -1,0 +1,123 @@
+OAuth 2.0 -  Security
+----------------------------------------
+
+-> OAuth 2.0, which stands for “Open Authorization” Security Mechanism
+
+-> This mechanism is used to provide access for users to access websites/applications
+
+-> This mechanism is used by Amazon, Google, Facebook, Microsoft etc..
+
+-> OAuth is an Authorization framework
+
+-> Authentication is the process of verifying credentials of the user
+
+-> Authorization is the process of verifying user access for the resource/functionality
+
+-> OAuth supportts only Authorization
+
+-> In Simple Terminology, OAuth is an Authorization framework that provides tokens to check Authorization for client request.
+
+
+OAuth2.0 Roles
+---------------
+The idea of roles is part of the core specification of the OAuth2.0 authorization framework. These define the essential components of an OAuth 2.0 system, and are as follows:  
+
+Resource Owner: The user or system that owns the protected resources and can grant access to them.
+
+Client: The client is the system that requires access to the protected resources. To access resources, the Client must hold the appropriate Access Token.
+
+Authorization Server: This server receives requests from the Client for Access Tokens and issues them upon successful authentication and consent by the Resource Owner. The authorization server exposes two endpoints: the Authorization endpoint, which handles the interactive authentication and consent of the user, and the Token endpoint, which is involved in a machine to machine interaction.
+
+Resource Server: A server that protects the user’s resources and receives access requests from the Client. It accepts and validates an Access Token from the Client and returns the appropriate resources to it.
+
+How Does OAuth 2.0 Work?
+=========================
+=> At the most basic level, before OAuth 2.0 can be used, the Client must acquire its own credentials, a client id and client secret, from the Authorization Server in order to identify and authenticate itself when requesting an Access Token. 
+
+=> Using OAuth 2.0, access requests are initiated by the Client, e.g., a mobile app, website, smart TV app, desktop application, etc. The token request, exchange, and response follow this general flow:
+
+=> The Client requests authorization (authorization request) from the Authorization server, supplying the client id and secret to as identification; it also provides the scopes and an endpoint URI (redirect URI) to send the Access Token or the Authorization Code to.
+
+=> The Authorization server authenticates the Client and verifies that the requested scopes are permitted. 
+
+=> The Resource owner interacts with the Authorization server to grant access.
+
+=> The Authorization server redirects back to the Client with either an Authorization Code or Access Token, depending on the grant type.
+
+=> With the Access Token, the Client requests access to the resource from the Resource server.
+
+
+
+
+
+Steps to Develop SpringBoot application with OAuth2.0 Security using Git Hub Account
+------------------------------------------------------------------------------------
+1) Create Account in GITHUB
+
+2) Go to Developer settings in Git Hub and Create OAuth2.0 application
+   with Application URL and Callback URL. 
+
+(Profile -> Settings -> Developer Settings -> OAuth Apps)
+
+	homepage url : http://localhost:9090/
+	Authorization Callback URL : http://localhost:9090/
+
+3) After application got created it will provide Client ID and Client Secret. Note down client id and client secret.
+
+Client ID : cac528a48b812e0b8e30
+Client Secret : 9c34f61b5e69b94d7f6fd8460f3690742f4ec0ed
+
+4) Create SpringBoot Web application with below dependencies
+
+	1)spring-boot-starter-web
+	2)spring-cloud-starter-oauth2
+	3)spring-boot-starter-security
+
+5) Use @EnableOAuth2sso annotation at SpringBoot start class
+
+6) Use @RestController annotation at SpringBoot start class to represent that class as a distributed component and write one distributed method.
+
+@RestController
+public class WelcomeRestController {
+	@GetMapping("/")
+	public String welcomeMsg() {
+		String msg = "Welcome to Ashok IT...!!";
+		return msg;
+	}
+}
+
+7) Write below Oauth configuration in application.yml file (change client-id and client-secret)
+
+security:
+  oauth2:
+    client:
+      clientId: <client-id>
+      clientSecret: <client-secret>
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      user-info-uri: https://api.github.com/user
+
+8) Change Embedded Container port number in application.yml file
+	server: 
+	   port: 9090
+
+9) Start SpringBoot application and send request to rest api method.
+
+	( URL : http://localhost:9090/ )
+
+-----------------------------------------------------------------------------------------------------
+
+-> When we send request to above rest api, it will redirect us to Git Hub login
+
+-> If we enter valid Git Hub credentials and submit, then it will redirect the request to our rest api resource method and we can see the response.
+
+-> If we enter invalid git credentials, it will not allow us to access rest api.
+
+============================================================================================================
+
+
+
+
+

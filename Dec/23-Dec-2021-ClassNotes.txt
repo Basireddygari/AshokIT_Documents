@@ -1,0 +1,89 @@
+Building First Web App Using Spring Boot
+------------------------------------------------------------------------
+1) Create Spring Starter Project Using IDE
+
+Note: While creating the project select below starter
+
+		spring-boot-starter-web
+
+Note: Above starter will provide apache tomact as default embedded server
+
+2) Create Controller class with required methods
+
+3) Bind the method to HTTP Request
+
+4) Create a view file
+
+5) Configure View Resolver in application.properties file
+
+6) Run the application and test it.
+
+-----------------------------pom.xml-----------------------------------------
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+------------------------------GreetController.java---------------------------------
+@Controller
+public class GreetController {
+
+	@GetMapping("/greet")
+	public ModelAndView greetMsg() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", "Hello, Good Evening..!!");
+		mav.setViewName("dashboard");
+
+		return mav;
+	}
+}
+----------------------/webapp/views/dashboard.jsp---------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>${msg}
+</body>
+</html>
+-----------------------------application.properties--------------------------------
+server.port=1111
+spring.mvc.view.prefix=/views/
+spring.mvc.view.suffix=.jsp
+----------------------------------------------------------------------------------
+
+URL access the app : http://localhost:1111/greet
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,190 @@
+=> In the last session, we discussed about how to send data from Controller to UI
+
+=> To send data from Controller to UI we are using Model object.
+
+=> Model will represent data in the form of key-value pair
+------------------------------------------------------------------------------------------
+Today's topic : Sending data from UI to controller
+------------------------------------------------------------------------------------------
+-> We can send data from UI to controller in below 3 ways
+
+		1) Query Parameters
+		2) Path Parameters
+		3) Request Body
+---------------------------------------------------------------------------------------------
+Query Parameters
+----------------------------------------------------------------------------------------------
+-> Query Parameters will represent data in the form of key-value pair
+
+ 	www.ashokitech.com/courses?name=sbms&trainer=ashok
+
+-> Query Parameters will start with question mark (?) and will be seperated by and (&) symbol
+
+-> Query Parameters always will present at end of the URL
+
+-> To read query parameters from URL we will use @RequestParam annotation
+---------------------------------------------------------------------------------------------
+@Controller
+public class WelcomeController {
+
+	@GetMapping("/welcome")
+	public String welcomeMsg(@RequestParam("name") String name, Model model) {
+		String msgTxt = name + ", Welcome to Spring Web MVC";
+		model.addAttribute("msg", msgTxt);
+		return "index";
+	}
+}
+-----------------------------------------------------------------------------------------------
+Path Parameters (or) Path variables (or) URI Parameters
+---------------------------------------------------------------------------------------------
+-> Path Parameters are also used to send data to server in URL
+
+-> Path Parameters will represent data directly in URL (No key)
+
+-> Path Parameters can present anywhere in the URL
+
+	www.ashokitech.com/course/java
+
+-> Path Parameters should be represented in URL pattern
+	
+-> To read path parameters from URL we will use @PathVariable annotation
+
+-------------------------------------------------------------------------------------------
+@Controller
+public class WelcomeController {
+
+	@GetMapping("/welcome/{name}")
+	public String welcomeMsg(@PathVariable("name") String name, Model model) {
+		String msgTxt = name + ", Welcome to Spring Web MVC";
+		model.addAttribute("msg", msgTxt);
+		return "index";
+	}
+}
+----------------------------------------------------------------------------------------------
+-> Both Query Params & Path Params data is visible in URL
+
+-> It is not recommended to send sensitive data in URL like pwd, pin, otp etc...
+
+-> Query Params & Path Params supports only text data (no support for binary data)
+
+-> If we want to send any sensitive data then it is recommended to send using Request Body.
+----------------------------------------------------------------------------------------------
+Form Based Applications
+-----------------------------------------------------------------------------------------------
+
+-> Spring Web MVC Module provided Form Tag Library To develop the forms easily
+
+-> Spring MVC form tag library supports for Form Binding
+
+-> Form Binding means binding form data to object and object data to form.
+
+		object <======> form fields
+
+
+-----------------------------------------------------------------------------------------------
+Login Form Example
+-----------------------------------------------------------------------------------------------
+public class LoginForm {
+
+	private String email;
+	private String pwd;
+
+	//setters & getters
+}
+-----------------------------------------------------------------------------------------------
+@Controller
+public class LoginController {
+
+	@GetMapping("/login")
+	public String loginPage(Model model) {
+		LoginForm loginFormObj = new LoginForm();
+		model.addAttribute("loginForm", loginFormObj);
+		return "index";
+	}
+
+	@PostMapping("/checkLogin")
+	public String checkLogin(LoginForm formObj, Model model) {
+		if (formObj.getEmail().equals("ashok@gmail.com") 
+				&& formObj.getPwd().equals("abc@123")) {
+			model.addAttribute("msg", "Welcome to Ashok IT application...");
+			return "dashboard";
+		} else {
+			model.addAttribute("msg", "Invalid Credentials");
+			return "index";
+		}
+	}
+}
+-----------------------------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	${msg}
+	<form:form action="checkLogin" modelAttribute="loginForm" method="POST">
+		<table>
+			<tr>
+				<td>Email :</td>
+				<td><form:input path="email" /></td>
+			</tr>
+			<tr>
+				<td>Password :</td>
+				<td><form:password path="pwd" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Login" />
+			</tr>
+		</table>
+	</form:form>
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	${msg}
+	<br />
+	<a href="login">Logout</a>
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+server.port=9090
+
+spring.mvc.view.prefix=/pages/
+spring.mvc.view.suffix=.jsp
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

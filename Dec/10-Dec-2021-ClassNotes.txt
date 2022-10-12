@@ -1,0 +1,49 @@
+=> In Last session we discucced how to develop application using Spring Data JPA
+=> Today's session we will perform CRUD operations using Data JPA
+---------------------------------------------------------------------------------------------
+
+-> Spring Data JPA provided Repositories to perform CRUD Operations
+
+		1) CrudRepository
+		2) JpaRepository
+
+-> The above both interfaces provided methods to perform Crud operations
+
+-----------------------------------------------------------------------------------
+CrudRepository - Methods
+-----------------------------------------------------------------------------------
+-> CurdRepository interface provided several methods to perform crud operations
+
+save (T entity)
+saveAll(Iterable<T> entities)
+
+findById(ID id)
+findAllById(Iterable<ID> ids)
+findAll( )
+
+existsById(ID id)
+count( )
+
+deleteById(ID id)
+deleteAllById(Iterable<ID> ids)
+delete(T entity)
+delete(Iterable<T> entities)
+deleteAll( )
+
+=> We don't have seperate method for update operation
+
+=> save( ) method can be used for insertion & updation
+
+=> If any method is doing both insertion & updation then that method is called as UPSERT method.
+
+=> When we call save( ) method we will pass entity object as parameter. If our entity class contains primary key which is matching with any record in db then it will update that record otherwise it will insert that record.
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+

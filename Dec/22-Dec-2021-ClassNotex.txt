@@ -1,0 +1,105 @@
+			Spring Web MVC
+			==============
+
+1) What is Spring Web MVC Module
+2) Advantages of Spring Web MVC module
+3) Spring Web MVC Architecture
+4) Front Controller (DispatcherServlet)
+5) HandlerMapper
+6) Controller
+7) ModelAndView
+8) ViewResolver
+9) Spring MVC Form Tag Library
+10) Thymeleaf
+11) Form validations
+-------------------------------------------------------------------------
+-> Spring Web MVC is one of the module available in Spring Framework
+
+-> Spring Web MVC module is used for developing below types of applications
+
+		1) Web Applications
+		2) Distributed Applications
+
+-> Web Applications meant for customer to business communication (C2B)
+
+		Ex: gmail, facebook, ashokitech
+
+-> Distributed applications meant for business to business communication
+
+		Ex: Flipkart <--> Bank App
+		    Swiggy <---> Bank App
+		    Passpart <---> AADHAR App
+
+Note: To develop distributed applications we will use webservices/restful services.
+
+--------------------------------------------------------------------------
+Advantages of going for Spring Web MVC
+-------------------------------------------------------------------------
+-> Spring Web MVC components are loosely coupled
+
+-> Spring Web MVC components are clearly defined
+
+-> Spring Web MVC supports for multiple presentation technologies
+		Ex: JSP & Thymeleaf
+
+-> Spring Web MVC supporting for form binding. It will capture form data and it will convert that form data into object. We no need to use request.getParameter("key") to capture the data.
+
+-> Spring Web MVC provided form tag library to develop forms easily
+
+-> Spring Web MVC supports for form validations
+-------------------------------------------------------------------------
+Spring Web MVC Architecture
+------------------------------------------------------------------------
+-> Spring Web MVC Architecture contains below components
+
+1) FrontController (DispatcherServlet)
+
+2) HandlerMapper
+
+3) Controller
+
+4) ModelAndView
+
+5) ViewResolver
+
+6) View
+-------------------------------------------------------------------------
+
+-> When user send a request to spring based web application then that request will be recieved by DispatcherServlet.
+
+-> DispatcherServlet is a predefined class available in Spring Web MVC module. It acts as front controller and it will take care of request handling and response handling.
+
+-> Dispatcher servlet will give request information to handler mapper. HandlerMapper is a predefined class and it is used to identify which request should be processed by which controller and it will give controller details to DispatcherServlet.
+
+-> DispatcherServlet will call Controller method based on details given by HandlerMapper
+
+-> Controller is used to handle request and give response data along with view file name using ModelAndView object.
+
+   => Model means Map. It represents data in key-value format
+   => view file name means it represents logical file name 
+
+Note: Spring Controllers don't know which presentation technology we are using in the application.
+
+-> DispatcherServlet will give view name to ViewResolver. It will identify where is the view file and what is view technology and it will give view file information to DispatcherServlet.
+
+-> DispatcherServlet will give model-data and view file details to View component. View component will render model data on view file and will give to DispatcherServlet
+
+-> DispatcherServlet will send final response to client/browser.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

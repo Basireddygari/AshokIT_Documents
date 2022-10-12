@@ -1,0 +1,46 @@
+=> In Last session we developed Registration Form Using Spring MVC Form Tag Library
+-------------------------------------------------------------------------
+Today's session : Layered Architecture Based App Development
+-------------------------------------------------------------------------
+-> In Realtime application will be divided into multiple layers
+
+		1) Presentation Layer (UI)
+		2) Web Layer
+		3) Business/Service Layer
+		4) Persistence Layer
+
+-> Presentation layer contains User Interface Logic (UI)
+
+-> Web Layer contains logic to handle request & response
+
+-> Business/Service layer contains business logic & integration logic
+
+-> Persistence Layer contains database communication logic
+
+-------------------------------------------------------------------------
+Requirement : Develop a web application to store and retrieve books details using Layered Architecture
+
+Form Fields
+------------
+Book Name (text field)
+Book Price (text field)
+Book Author (text field)
+
+Submit (Button)
+View All Books (Hyperlink)
+
+=> After entering the data in form, user will click on "Submit" button then book data should be stored into database table and success message should be displayed on the page.
+
+=> When user click on "View All Books" hyperlink, retrieve books info from database table and display in web page in table format.
+
+
+
+
+
+
+
+
+
+
+
+
